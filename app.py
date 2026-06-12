@@ -1,5 +1,4 @@
 import re
-
 import streamlit as st
 
 st.set_page_config(page_title="Asystent - Finanse Międzynarodowe", layout="wide")
@@ -122,8 +121,6 @@ elif opcja == "2. Kursy krzyżowe (Bid/Ask)":
                 elif set(cel) != (set(para1) | set(para2)) - {X}:
                     st.error("Para wynikowa musi składać się z dwóch walut NIE-wspólnych (po jednej z każdej pary). Sprawdź pisownię.")
                 else:
-                    # Każdą nogę liczymy w kierunku: waluta bazowa wyniku -> waluta wspólna -> waluta kwotowana wyniku.
-                    # Jeśli para z zadania jest zapisana "w drugą stronę", odwracamy ją (Bid = 1/Ask, Ask = 1/Bid).
                     def noga(od, do):
                         for (para, b, a) in [(para1, p1_bid, p1_ask), (para2, p2_bid, p2_ask)]:
                             nazwa = f"{para[0]}/{para[1]}"
